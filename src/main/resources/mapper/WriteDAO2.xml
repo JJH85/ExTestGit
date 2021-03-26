@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.lec.sts19_rest.domain.WriteDAO">
+
+	<!-- 매퍼파일에
+	keyProperty="uid" useGeneratedKeys="true" keyColumn="wr_uid" 명시하면
+	generated 된 key 값을 dto 에 받아올수 있다!
+ 	--> 
+	<insert id="insert" flushCache="true"
+		parameterType="com.lec.sts19_rest.domain.WriteDTO"
+		keyProperty="uid" useGeneratedKeys="true" keyColumn="wr_uid">
+		INSERT INTO test_write
+			(wr_uid, wr_subject, wr_content, wr_name, wr_regdate)
+		VALUES
+			(test_write_seq.nextval, #{subject}, #{content}, #{name}, SYSDATE)
+	</insert>
+	
+	<!-- 
+	<insert id="insert" flushCache="true">
+		INSERT INTO test_write
+			(wr_uid, wr_subject, wr_content, wr_name, wr_regdate)
+		VALUES
+			(test_write_seq.nextval, #{param1}, #{param2}, #{param3}, SYSDATE)
+	</insert>
+	 -->
+
+</mapper>
+    
